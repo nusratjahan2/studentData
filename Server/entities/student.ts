@@ -1,17 +1,15 @@
-// import {Entity, Column, PrimaryGeneratedColumn } from "typeorm"
+import {Entity, Column, PrimaryGeneratedColumn } from "typeorm"
 
-// @Entity()
-//  export class Student{
-//     @PrimaryGeneratedColumn()
-//     id: number
+@Entity()
+ export class Student{
+    @PrimaryGeneratedColumn()
+    id: number
 
-//     @Column()
-//     firstName: string
+    @Column()
+    name: string
 
-//     @Column()
-//     lastName: string
+    @Column()
+    department: string
 
-//     @Column()
-//     isActive: boolean
 
-// }
+}
