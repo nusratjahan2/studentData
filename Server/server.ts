@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import express from "express";
-import { createConnection } from "typeorm";
+import { DataSource } from "typeorm";
 import cors from "cors";
 import { Student } from "./entities/student"
 
@@ -8,19 +8,18 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-createConnection(
-    // {
-    //     "type": "mysql",
-    //     "host": "localhost",
-    //     "port": 3306,
-    //     "username": "root",
-    //     "password": "",
-    //     "database": "studentdb",
-    //     "synchronize": true,
-    //     "entities": [Student]
-    //   }
-      
-)
+export const StudentDataSource = new DataSource({
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "root",
+  "password": "",
+  "database": "studentdb",
+  "synchronize": true,
+  "entities": [Student]
+})
+
+StudentDataSource.initialize()
 .then(() => {
   console.log("Connected to MySQL Database");
 
